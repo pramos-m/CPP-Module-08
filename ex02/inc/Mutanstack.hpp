@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Mutanstack.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 11:49:30 by pramos-m          #+#    #+#             */
-/*   Updated: 2024/03/14 11:49:31 by pramos-m         ###   ########.fr       */
+/*   Created: 2024/03/14 17:31:54 by pramos-m          #+#    #+#             */
+/*   Updated: 2024/03/14 17:37:29 by pramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-template < typename T >
-int		easyfind( const T& arr, int toFind );
+#include <stack>
 
 template < typename T >
-void	test( const T& arr, int *numbers, unsigned int size, int toFind );
+class MutantStack: public std::stack< T >
+{
+	public:
+		MutantStack( void );
+		MutantStack( const MutantStack& mts );
+		~MutantStack( void );
+		MutantStack&	operator=( const MutantStack& mts );
 
-#include "easyfind.tpp"
+		typedef typename std::stack< T >::container_type::iterator iterator;
+
+		iterator		begin( void );
+		iterator		end( void );
+};
+
+#include "MutantStack.tpp"
